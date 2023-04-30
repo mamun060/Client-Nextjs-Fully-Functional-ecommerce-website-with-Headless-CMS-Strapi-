@@ -51,7 +51,7 @@ const Menu = ({ showCatMenu, setShowCatMenu, categories }) => {
                             </li>
                         ) : (
                             <li className="cursor-pointer">
-                                <Link href={item?.url}>{item.name}</Link>
+                                <Link href={`${item?.url}`}>{item.name}</Link>
                             </li>
                         )}
                     </React.Fragment>
