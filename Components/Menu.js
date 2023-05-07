@@ -34,6 +34,21 @@ const Menu = ({ showCatMenu, setShowCatMenu, categories }) => {
                                 {showCatMenu && (
                                     <ul className="bg-white absolute top-6 left-0 min-w-[250px] px-1 py-1 text-black shadow-lg">
                                         {
+                                            categories?.map(({ attributes: c, id})=> {
+                                                return (
+                                                <Link key={id} href={`/category/${c.slug}`}>
+                                                    <li
+                                                    onClick={()=> setShowCatMenu(false)}
+                                                    className=" cursor-pointer p-2 h-12 flex justify-between align-center hover:bg-black/[0.03] rounded-md">{c.name}
+                                                    <span className="opacity-50 text-sm">
+                                                      {`(${c.products.data.length})`}
+                                                    </span>
+                                                    </li>
+                                                </Link>
+                                                )
+                                            })
+                                        }
+                                        {/* {
                                             subMenuData.map((subMenu)=>{
                                                return (
                                                 <Link key={subMenu.id} href={`/category/${subMenu.name}`}>
@@ -45,7 +60,7 @@ const Menu = ({ showCatMenu, setShowCatMenu, categories }) => {
                                                 </Link>
                                                ) 
                                             })
-                                        }
+                                        } */}
                                     </ul>
                                 )}
                             </li>

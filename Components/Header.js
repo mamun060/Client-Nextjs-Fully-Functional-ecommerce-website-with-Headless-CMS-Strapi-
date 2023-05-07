@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Wrapper from './Wrapper'
 import Menu from './Menu'
 import { IoMdHeartEmpty } from "react-icons/io";
@@ -9,6 +9,7 @@ import { BsCart } from "react-icons/bs";
 import { BiMenuAltRight } from "react-icons/bi";
 import { VscChromeClose } from "react-icons/vsc";
 import MenuMobile from './MenuMobile';
+import { fetchDataFromApi } from '@/utils/api';
 
 
 export default function Header() {
@@ -32,6 +33,14 @@ export default function Header() {
       setLastScrollY(window.scrollY);
   };
 
+  useEffect(()=>{
+    fetchCategories();
+  }, [])
+
+  const fetchCategories = async () =>{
+    const { data } = await fetchDataFromApi("/api/categories?populate=*");
+    setCategories(data);
+  }
 
 
   return (
