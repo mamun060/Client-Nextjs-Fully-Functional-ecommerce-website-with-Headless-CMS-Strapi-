@@ -2,9 +2,9 @@
 
 const nextConfig = {
   reactStrictMode: true,
-  // images: {
-  //   domains: ["http://127.0.0.1:1337"],
-  // },
+  eslint: {
+      ignoreDuringBuilds: true,
+  },
   images: {
     remotePatterns: [
       {
